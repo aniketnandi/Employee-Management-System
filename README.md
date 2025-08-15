@@ -47,7 +47,8 @@ VITE_API_URL=http://localhost:8000/api/v1
 docker compose up --build
 
 Backend will be at: http://localhost:8000
-Frontend will be at: http://localhost:5173```
+Frontend will be at: http://localhost:5173
+```
 
 Screenshots (login, employees)
 
