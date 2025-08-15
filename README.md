@@ -29,8 +29,8 @@ Provides secure authentication, employee data management, and an intuitive front
 - Docker & Docker Compose
 
 **Local run (Docker Compose) steps**
-1️) Clone the Repository
-```bash
+```1️) Clone the Repository
+bash
 git clone https://github.com/aniketnandi/Employee-Management-System.git
 cd Employee-Management-System
 
@@ -47,7 +47,7 @@ VITE_API_URL=http://localhost:8000/api/v1
 docker compose up --build
 
 Backend will be at: http://localhost:8000
-Frontend will be at: http://localhost:5173
+Frontend will be at: http://localhost:5173```
 
 Screenshots (login, employees)
 
