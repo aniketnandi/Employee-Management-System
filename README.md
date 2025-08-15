@@ -29,7 +29,8 @@ Provides secure authentication, employee data management, and an intuitive front
 - Docker & Docker Compose
 
 **Local run (Docker Compose) steps**
-```1️) Clone the Repository
+```
+1️) Clone the Repository
 bash
 git clone https://github.com/aniketnandi/Employee-Management-System.git
 cd Employee-Management-System
