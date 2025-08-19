@@ -56,6 +56,4 @@ Frontend will be at: http://localhost:5173
 <img width="561" height="252" alt="image" src="https://github.com/user-attachments/assets/4a153356-a612-4c42-ac1f-f7f00a2307c8" />
 <img width="463" height="317" alt="image" src="https://github.com/user-attachments/assets/5d54a2f2-db09-4cac-84d7-c929581cad07" />
 
-API docs link (/docs)
 
-Live demo (when you deploy)
