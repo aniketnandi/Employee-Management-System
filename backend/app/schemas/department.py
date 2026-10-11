@@ -1,12 +1,12 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, Field
 
-class DepartmentBase(BaseModel):
-    name: str
 
-class DepartmentCreate(DepartmentBase):
-    pass
+class DepartmentCreate(BaseModel):
+    name: str = Field(min_length=1, max_length=100)
 
-class DepartmentRead(DepartmentBase):
+
+class DepartmentRead(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
-    class Config:
-        from_attributes = True
+    name: str

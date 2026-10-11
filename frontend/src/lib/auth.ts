@@ -1,10 +1,13 @@
+const TOKEN_KEY = "ems_token";
+
 export function setToken(token: string) {
-  localStorage.setItem("token", token);
+  localStorage.setItem(TOKEN_KEY, token);
 }
+
 export function getToken(): string | null {
-  return localStorage.getItem("token");
+  return localStorage.getItem(TOKEN_KEY);
 }
-export function authHeader() {
-  const t = getToken();
-  return t ? { Authorization: `Bearer ${t}` } : {};
+
+export function clearToken() {
+  localStorage.removeItem(TOKEN_KEY);
 }
