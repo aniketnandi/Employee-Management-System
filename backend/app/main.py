@@ -1,32 +1,43 @@
-import uvicorn
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.db.base import Base
-from app.db.session import engine
-from app.api.v1 import auth as auth_routes
-from app.api.v1 import employees as employee_routes
-from app.api.v1 import departments as department_routes
 
-# Create tables on startup (for dev). In prod, use Alembic.
-Base.metadata.create_all(bind=engine)
+from app.api.v1 import auth, departments, employees
+from app.core.config import settings
+from app.db.session import SessionLocal
+from app.services.seed import seed_demo_data
 
-app = FastAPI(title="EMS API", version="1.0.0")
 
-# Allow your frontend dev server
-origins = ["http://localhost:3000", "http://127.0.0.1:3000", "http://localhost:5173"]
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins, allow_credentials=True,
-    allow_methods=["*"], allow_headers=["*"]
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    # The schema is managed by Alembic (`alembic upgrade head`); seeding only inserts rows.
+    if settings.seed_demo_data:
+        with SessionLocal() as db:
+            seed_demo_data(db)
+    yield
+
+
+app = FastAPI(
+    title="Employee Management System API",
+    version="1.0.0",
+    description="REST API for managing employees and departments, secured with JWT authentication.",
+    lifespan=lifespan,
 )
 
-app.include_router(auth_routes.router, prefix="/api/v1/auth", tags=["auth"])
-app.include_router(employee_routes.router, prefix="/api/v1/employees", tags=["employees"])
-app.include_router(department_routes.router, prefix="/api/v1/departments", tags=["departments"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.get("/")
-def root():
-    return {"message": "Employee Management API is running 🚀"}
+app.include_router(auth.router, prefix="/api/v1/auth", tags=["auth"])
+app.include_router(employees.router, prefix="/api/v1/employees", tags=["employees"])
+app.include_router(departments.router, prefix="/api/v1/departments", tags=["departments"])
 
-if __name__ == "__main__":
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+
+@app.get("/health", tags=["health"])
+def health():
+    return {"status": "ok"}

@@ -1,1 +1,1 @@
-Generic single-database configuration.
+Alembic migrations for the EMS database. Run `alembic upgrade head` from the backend/ directory.

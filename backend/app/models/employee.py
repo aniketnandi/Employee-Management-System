@@ -1,18 +1,23 @@
-from sqlalchemy import Column, Integer, String, Date, Float, ForeignKey
-from sqlalchemy.orm import relationship
+from datetime import date
+
+from sqlalchemy import Date, ForeignKey, Integer, Numeric, String
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from app.db.base import Base
+
 
 class Employee(Base):
     __tablename__ = "employees"
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(100), nullable=False)
-    email = Column(String(255), unique=True, index=True, nullable=False)
-    phone = Column(String(30), nullable=True)
-    role = Column(String(50), nullable=True)
-    join_date = Column(Date, nullable=True)
-    salary = Column(Float, nullable=True)
-    department_id = Column(Integer, ForeignKey("departments.id"), nullable=True)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    name: Mapped[str] = mapped_column(String(100), nullable=False, index=True)
+    email: Mapped[str] = mapped_column(String(255), unique=True, index=True, nullable=False)
+    phone: Mapped[str | None] = mapped_column(String(30))
+    role: Mapped[str | None] = mapped_column(String(50))
+    join_date: Mapped[date | None] = mapped_column(Date)
+    salary: Mapped[float | None] = mapped_column(Numeric(12, 2, asdecimal=False))
+    department_id: Mapped[int | None] = mapped_column(
+        ForeignKey("departments.id", ondelete="SET NULL"), index=True
+    )
 
-    # optional: define relationship if needed
-    # department = relationship("Department", backref="employees")
+    department = relationship("Department", back_populates="employees")
