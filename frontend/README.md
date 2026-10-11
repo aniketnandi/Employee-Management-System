@@ -10,4 +10,4 @@ npm run lint
 npm run build
 ```
 
-Set `VITE_API_URL` (see `.env.example`) to point at the backend; it defaults to `http://localhost:8000`.
+In development the Vite server proxies `/api` to the backend at `API_PROXY_TARGET` (default `http://localhost:8000`), so no CORS setup is needed. See `.env.example` for calling a backend on another origin.

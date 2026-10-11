@@ -1,0 +1,26 @@
+{
+  "name": "Employee Management System",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" }
+  },
+  "containerEnv": {
+    "DATABASE_URL": "sqlite:////workspaces/.ems/ems.db",
+    "SEED_DEMO_DATA": "true"
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postAttachCommand": "bash .devcontainer/start.sh",
+  "forwardPorts": [5173, 8000],
+  "portsAttributes": {
+    "5173": { "label": "Web app", "onAutoForward": "openBrowser" },
+    "8000": { "label": "API", "onAutoForward": "silent" }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    },
+    "vscode": {
+      "extensions": ["ms-python.python", "dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss"]
+    }
+  }
+}

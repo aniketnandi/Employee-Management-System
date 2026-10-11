@@ -1,8 +1,10 @@
 import axios, { AxiosError } from "axios";
 import { clearToken, getToken } from "./auth";
 
+// Defaults to a same-origin path served through the Vite dev proxy (see vite.config.ts).
+// Set VITE_API_URL to call a backend on a different origin instead.
 const api = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL || "http://localhost:8000"}/api/v1`,
+  baseURL: `${import.meta.env.VITE_API_URL ?? ""}/api/v1`,
 });
 
 api.interceptors.request.use((config) => {
