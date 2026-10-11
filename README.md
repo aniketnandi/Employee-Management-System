@@ -5,6 +5,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.116-009688?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A full-stack employee directory with JWT authentication, role-based access control, and search. It runs as a
 **FastAPI** REST API, a **React + TypeScript** single-page app, and a **PostgreSQL** database, all started with one
@@ -156,3 +157,7 @@ cd frontend && npm run lint && npm run build # type checking, lint, production b
 - Server-side sorting and paginated responses with total counts
 - Frontend unit tests (Vitest + React Testing Library)
 - A production Docker image that serves the built frontend through Nginx
+
+## License
+
+Released under the [MIT License](LICENSE).
