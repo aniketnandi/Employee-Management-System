@@ -13,7 +13,18 @@ Docker Compose command.
 
 I first built this in my undergrad with PHP and MySQL. This is a full rewrite on a modern, typed, tested stack.
 
-![Employee dashboard](docs/screenshots/employees.png)
+![Demo: signing in, searching, filtering by department, adding and editing an employee](docs/demo.gif)
+
+## Try It in Your Browser
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/aniketnandi/Employee-Management-System?quickstart=1)
+
+There's nothing to install. Click the button and then **Create codespace** (you need to be signed in to GitHub).
+The app builds and starts by itself, which takes about 2 minutes the first time, and then opens in a new tab.
+Sign in with **`admin` / `admin123`**.
+
+If the tab doesn't open, go to the **Ports** panel in the codespace and open the globe icon next to port 5173.
+The codespace uses SQLite and comes with sample data, so you can add, edit, and delete freely.
 
 ## Features
 
@@ -69,7 +80,7 @@ frontend/
 
 ## Getting Started
 
-### Option 1: Docker Compose (recommended)
+### Option 1: Docker Compose
 
 You need [Docker](https://docs.docker.com/get-docker/).
 
@@ -107,6 +118,8 @@ cd frontend
 npm install
 npm run dev
 ```
+
+Then open http://localhost:5173. The Vite dev server forwards `/api` requests to the backend on port 8000.
 
 ### Configuration
 
