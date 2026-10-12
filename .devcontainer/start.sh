@@ -18,7 +18,7 @@ done
 cat <<'MSG'
 
   Employee Management System is running.
-    Web app:  port 5173 (opens in a new browser tab; see the PORTS panel for the URL)
+    Web app:  port 5173 (Ports panel -> globe icon opens it in a browser tab)
     API docs: port 8000, path /docs
     Sign in:  admin / admin123
 
