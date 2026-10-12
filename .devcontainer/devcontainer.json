@@ -16,9 +16,6 @@
     "8000": { "label": "API", "onAutoForward": "silent" }
   },
   "customizations": {
-    "codespaces": {
-      "openFiles": ["README.md"]
-    },
     "vscode": {
       "extensions": ["ms-python.python", "dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss"],
       "settings": {
