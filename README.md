@@ -20,10 +20,11 @@ I first built this in my undergrad with PHP and MySQL. This is a full rewrite on
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/aniketnandi/Employee-Management-System?quickstart=1)
 
 There's nothing to install. Click the button and then **Create codespace** (you need to be signed in to GitHub).
-The app builds and starts by itself, which takes about 2 minutes the first time, and then opens in a new tab.
-Sign in with **`admin` / `admin123`**.
+The app builds and starts by itself, which takes about 2 minutes the first time, and then opens in a preview
+pane inside the codespace. Sign in with **`admin` / `admin123`**.
 
-If the tab doesn't open, go to the **Ports** panel in the codespace and open the globe icon next to port 5173.
+To open the app in a full browser tab instead, go to the **Ports** panel, find port 5173 ("Web app"), and click
+the globe icon.
 The codespace uses SQLite and comes with sample data, so you can add, edit, and delete freely.
 
 ## Features
